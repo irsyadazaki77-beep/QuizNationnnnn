@@ -1,0 +1,21 @@
+/* Safe background-only Mega Mendung layer for main pages. */
+html {
+  min-height: 100%;
+  background: #f7fbff url("assets/mega-mendung-bg.svg") center center / cover fixed no-repeat;
+}
+
+body {
+  background-image: url("assets/mega-mendung-bg.svg") !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+@media (max-width: 760px) {
+  html,
+  body {
+    background-attachment: scroll !important;
+    background-position: center top !important;
+  }
+}
