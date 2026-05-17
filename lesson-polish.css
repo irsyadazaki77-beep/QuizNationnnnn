@@ -551,3 +551,403 @@ a:focus-visible,
     width: 100%;
   }
 }
+
+/* Android lesson layout repair
+   Keep this block last: it intentionally wins over the shared mobile CSS layer. */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100dvh;
+    width: 100%;
+    padding: max(10px, env(safe-area-inset-top)) 10px max(14px, env(safe-area-inset-bottom)) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    align-items: stretch !important;
+  }
+
+  body::before {
+    background:
+      linear-gradient(180deg, rgba(247, 251, 255, 0.92), rgba(232, 243, 255, 0.88)),
+      radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.14), transparent 34%),
+      radial-gradient(circle at 96% 24%, rgba(20, 184, 166, 0.12), transparent 30%);
+  }
+
+  .app {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: calc(100dvh - 24px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 12px !important;
+    gap: 12px !important;
+    border-radius: 18px !important;
+    overflow: visible !important;
+    box-shadow: 0 16px 36px rgba(28, 57, 98, 0.14);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .lesson-header {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100%;
+    padding: 2px 0 0 !important;
+    margin: 0 !important;
+  }
+
+  .header-title-group,
+  .title-row,
+  .header-status,
+  .progress-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .title-row {
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    align-items: start !important;
+    gap: 8px !important;
+  }
+
+  .lesson-header h2 {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 9px;
+    font-size: clamp(1.08rem, 5vw, 1.32rem) !important;
+    line-height: 1.18;
+  }
+
+  #levelTitle {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .level-emoji {
+    width: 38px !important;
+    height: 38px !important;
+    flex: 0 0 38px;
+    border-radius: 12px;
+  }
+
+  .focus-pill {
+    min-height: 36px;
+    padding: 7px 10px;
+    font-size: 0.74rem;
+    white-space: nowrap;
+    align-self: start;
+  }
+
+  .header-subtitle {
+    display: none;
+  }
+
+  .header-status {
+    display: grid !important;
+    grid-template-columns: minmax(96px, 0.42fr) minmax(0, 1fr);
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 0 !important;
+  }
+
+  .lesson-header .timer-wrap,
+  .timer-wrap {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 50px;
+    margin: 0 !important;
+    padding: 9px 10px !important;
+    border-radius: 14px !important;
+    justify-content: center;
+  }
+
+  .timer-icon {
+    display: none;
+  }
+
+  #timerDisplay {
+    font-size: clamp(1.12rem, 6vw, 1.36rem) !important;
+    line-height: 1;
+    letter-spacing: 0.5px !important;
+  }
+
+  .progress-label {
+    font-size: 0.76rem;
+    margin-bottom: 6px;
+  }
+
+  .progress {
+    height: 9px;
+  }
+
+  .content-wrapper {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    min-height: 0 !important;
+    padding: 14px !important;
+    border-radius: 16px !important;
+    overflow: visible !important;
+  }
+
+  .card::before {
+    border-radius: inherit;
+  }
+
+  .items-toolbar {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px !important;
+    width: 100%;
+    margin-bottom: 12px !important;
+  }
+
+  .item-btn {
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
+    gap: 3px;
+    width: 100% !important;
+    min-height: 42px !important;
+    padding: 8px 6px !important;
+    border-radius: 11px !important;
+    font-size: 0.68rem !important;
+    line-height: 1.15 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+
+  .item-btn span {
+    display: inline-flex;
+    min-width: 18px;
+    justify-content: center;
+    padding: 1px 5px;
+    border-radius: 999px;
+  }
+
+  .question-meta {
+    gap: 7px;
+    margin-bottom: 10px !important;
+  }
+
+  .question-badge {
+    min-height: 30px;
+    padding: 5px 10px;
+    font-size: 0.74rem;
+  }
+
+  .question {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+    font-size: clamp(1.02rem, 4.6vw, 1.2rem) !important;
+    line-height: 1.45 !important;
+    overflow-wrap: anywhere;
+  }
+
+  .question::before {
+    position: static;
+    display: inline-grid;
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    place-items: center;
+    vertical-align: middle;
+    font-size: 1.05rem !important;
+    border-radius: 10px;
+    background: #e9f1ff;
+  }
+
+  .options {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100%;
+    max-height: none !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .option {
+    width: 100%;
+    min-height: 56px !important;
+    padding: 13px 14px !important;
+    border-radius: 14px !important;
+    font-size: 0.95rem !important;
+    line-height: 1.35 !important;
+    align-items: center;
+    overflow-wrap: anywhere;
+    touch-action: manipulation;
+  }
+
+  .option::before {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+  }
+
+  .nav-buttons {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px !important;
+    width: 100%;
+    margin-top: 14px !important;
+  }
+
+  .nav-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 11px 10px !important;
+    border-radius: 13px !important;
+    font-size: 0.88rem !important;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .sidebar-stack {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    min-height: 0 !important;
+    width: 100%;
+  }
+
+  .quick-stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+  }
+
+  .stat-mini {
+    min-height: 68px;
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .mini-label,
+  .nav-label,
+  .stat-label {
+    font-size: 0.68rem;
+  }
+
+  .stat-mini strong {
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+
+  .nav-panel {
+    padding: 13px !important;
+    border-radius: 15px !important;
+    overflow: visible !important;
+  }
+
+  .nav-label {
+    margin-bottom: 10px !important;
+  }
+
+  .nav-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 7px !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .nav-number {
+    width: 100%;
+    min-width: 0;
+    min-height: 38px !important;
+    aspect-ratio: auto !important;
+    border-radius: 10px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .footer,
+  .footer-left {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  #counter,
+  .finish-btn,
+  .back-link {
+    width: 100% !important;
+    min-height: 46px;
+    padding: 11px 12px !important;
+    border-radius: 13px !important;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .result-container {
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    padding: 16px 4px 4px !important;
+    overflow: visible !important;
+  }
+
+  .result-stats,
+  .result-buttons {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .btn {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 340px) {
+  .app {
+    padding: 10px !important;
+  }
+
+  .title-row,
+  .header-status,
+  .items-toolbar,
+  .nav-buttons,
+  .quick-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .focus-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lesson-header h2 {
+    font-size: 1.06rem !important;
+  }
+
+  .item-btn {
+    font-size: 0.8rem !important;
+  }
+}
